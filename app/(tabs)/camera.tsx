@@ -27,7 +27,7 @@ export default function Camera() {
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} 
+      {/* <CameraView style={styles.camera} facing={facing} 
       barcodeScannerSettings={{
     barcodeTypes: ["code128", "ean13", "ean8", "pdf417", "upc_e", "datamatrix", "code39", "code93", "itf14", "codabar"],
     }}
@@ -37,7 +37,8 @@ export default function Camera() {
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
         </View>
-      </CameraView>
+      </CameraView> */}
+      <Text>Wassup</Text>
     </View>
   );
 }
