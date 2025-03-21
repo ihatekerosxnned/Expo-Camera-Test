@@ -37,30 +37,54 @@ export default function Scanner() {
     setScannedData(data);
   };
 
-  // const handleBuy = async () => {
-  //   try {
-  //     // Ensure scanned data is available
-  //     if (!scannedData) {
-  //       alert("Please scan a QR code first!");
-  //       return;
-  //     }
+  const handleClaim = async () => {
+    try {
+      // Ensure scanned data is available
+      if (!scannedData) {
+        alert("Please scan a QR code first!");
+        return;
+      }
   
-  //     // Send request and store response
-  //     const response = await axios.post('http://192.168.1.15:8000/api/buy', {
-  //       control_no: scannedData
-  //     });
+      // Send request and store response
+      const response = await axios.post('http://192.168.1.21:8000/api/claim', {
+        control_no: scannedData
+      });
   
-  //     // Check response status
-  //     if (response.status === 200) {
-  //       alert("Voucher purchased successfully!");
-  //     } else {
-  //       alert(response.data.error || "Something went wrong.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error calling the API:", error);
-  //     alert("Uh oh, something went wrong!");
-  //   }
-  // };
+      // Check response status
+      if (response.status === 200) {
+        alert("Voucher purchased successfully!");
+      } else {
+        alert(response.data.error || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Error calling the API:", error);
+      alert("Uh oh, something went wrong!");
+    }
+  };
+  const handleBuy = async () => {
+    try {
+      // Ensure scanned data is available
+      if (!scannedData) {
+        alert("Please scan a QR code first!");
+        return;
+      }
+  
+      // Send request and store response
+      const response = await axios.post('http://192.168.1.21:8000/api/buy', {
+        control_no: scannedData
+      });
+  
+      // Check response status
+      if (response.status === 200) {
+        alert("Voucher purchased successfully!");
+      } else {
+        alert(response.data.error || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Error calling the API:", error);
+      alert("Uh oh, something went wrong!");
+    }
+  };
   
   return (
     <SafeAreaView style={styles.container}>
@@ -107,7 +131,7 @@ export default function Scanner() {
               alignItems: "center",
               backgroundColor: "#8146ff",
             }}
-            // onPress={handleBuy}
+            onPress={handleBuy}
           >
             <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>
               Buy
@@ -124,6 +148,7 @@ export default function Scanner() {
               borderWidth: 2, // This replaces "outline"
               borderColor: "#8146ff", // This replaces "outlineColor"
             }}
+            onPress={handleClaim}
           >
             <Text
               style={{ fontSize: 24, fontWeight: "bold", color: "#8146ff" }}
